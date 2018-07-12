@@ -11,7 +11,8 @@ const app = express();
 const upload = multer();
 
 app.get('/', (req, res) => {
-    return res.status(200).send('');
+    // return res.status(200).send('');
+    return res.sendFile(__dirname + '/donutman.jpg');
 });
 
 app.post('/avatar', upload.single('file'), (req, res) => {
@@ -42,8 +43,11 @@ app.post('/avatar', upload.single('file'), (req, res) => {
 app.post('/be-avatar', upload.single('file'), (req, res) => {
     console.log(req.file, req.body);
     const file = fs.createWriteStream(req.file.originalName);
-    req.file.stream.pipe(file);
-    return res.status(200).json('Successfully upload to BE.');
+    const stream = req.file.stream.pipe(file);
+
+    stream.on('finish', () => {
+        return res.status(200).json({ status: 'Successfully upload to BE.', file });
+    });
 });
 
 app.listen(8080, () => console.log('Server online | port:8080'));
