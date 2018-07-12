@@ -20,7 +20,7 @@ app.post('/avatar', upload.single('file'), (req, res) => {
 
     const options = {
         method: 'POST',
-        uri: '', // 'http://localhost:8080/be-avatar',
+        uri: 'https://node-210011.appspot.com/be-avatar', // 'http://localhost:8080/be-avatar',
         formData: {
             serviceNumber: req.body.serviceNumber,
             serviceType: req.body.serviceType,
