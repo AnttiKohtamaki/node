@@ -1,0 +1,16 @@
+{
+    "name": "node",
+    "description": "node server",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "nodemon app.js"
+    },
+    "dependencies": {
+        "express": "^4.16.3",
+        "multer": "^2.0.0-alpha.6",
+        "nodemon": "^1.18.1",
+        "request": "^2.87.0",
+        "request-promise": "^4.2.2"
+    }
+}
